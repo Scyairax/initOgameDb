@@ -1,3 +1,6 @@
+<html>
+    <?php require_once('../include/include_head.php');?>
+<body class="text-center" style="color:white;" background="../img/sfondo.jpg">
 <?php
     include('connection_db.php');
     
@@ -16,11 +19,11 @@ if($queryDb!=""){
     }
 }
 if($queryAlly!=""){
-if($conn->query($queryAlly) == TRUE){
-    echo '<div>update alliances    -----   <img src="../img/success-green-check-mark-icon.png" width="25" height="25"></div>';
-   }else {
-   echo "Errore durante la creazione ";
-}
+    if($conn->query($queryAlly) == TRUE){
+        echo '<div>update alliances    -----   <img src="../img/success-green-check-mark-icon.png" width="25" height="25"></div>';
+    }else {
+    echo "Errore durante la creazione ";
+    }
 }
 if($queryPly!=""){
    if($conn->query($queryPly) == TRUE){
@@ -43,5 +46,9 @@ if($querySc!=""){
    echo "Errore durante la creazione ";
    }
 }
+
+header( "refresh:5;url=../index.php" );
 ?>
 
+</body>
+</html>

@@ -1,4 +1,4 @@
-function generateQueryPlayer() {
+function    writeCreationDbQuery(){
     var query=' DROP DATABASE ogame;'
             +'CREATE DATABASE ogame;'
             +'USE	ogame;'
@@ -33,33 +33,32 @@ function generateQueryPlayer() {
             +' FOREIGN KEY (PlanetID) REFERENCES planet(ID) );'
             +'    SET FOREIGN_KEY_CHECKS = 0;';
         document.getElementById('creazioneDb').value=query
+}
+function    writeAllianceQuery(XMLHttpRequest){
+  //creazione oggetto xml
+  xmlhttp.open("GET", "https://s192-it.ogame.gameforge.com/api/alliances.xml", false); 
+  xmlhttp.send(null);
+      if (xmlhttp.status==200) {
+                  xmlDoc = xmlhttp.responseXML; 
+      }
+      else if (xmlhttp.status==404) {
+      alert("XML could not be found");
+      }
+  // Start to fetch the data by using TagName 
+  var x = xmlDoc.getElementsByTagName("alliance"); 
+  var query="";
+  for (i = 0; i < x.length; i++) { 
+      query+="INSERT INTO alliance VALUES (\'"+x[i].getAttribute('id')+"\',\'"
+              +x[i].getAttribute('name')+"\',\'"
+              +x[i].getAttribute('logo')+"\',\'"
+              +x[i].getAttribute('home')+"\',\'"
+              +x[i].getAttribute('open')+"\');";
+  } 
+  document.getElementById('alliance').value=query
 
-
-    //creazione oggetto xml
-    xmlhttp = new XMLHttpRequest()
-    xmlhttp.open("GET", "https://s192-it.ogame.gameforge.com/api/alliances.xml", false); 
-    xmlhttp.send(null);
-        if (xmlhttp.status==200) {
-                    xmlDoc = xmlhttp.responseXML; 
-        }
-        else if (xmlhttp.status==404) {
-        alert("XML could not be found");
-        }
-    // Start to fetch the data by using TagName 
-    var x = xmlDoc.getElementsByTagName("alliance"); 
-
-    query="";
-    for (i = 0; i < x.length; i++) { 
-        query+="INSERT INTO alliance VALUES (\'"+x[i].getAttribute('id')+"\',\'"
-                +x[i].getAttribute('name')+"\',\'"
-                +x[i].getAttribute('logo')+"\',\'"
-                +x[i].getAttribute('home')+"\',\'"
-                +x[i].getAttribute('open')+"\');";
-    } 
-    document.getElementById('alliance').value=query
-
-
-    //creazione oggetto xml
+}
+function    writePlayerQuery(XMLHttpRequest){
+//creazione oggetto xml
     xmlhttp.open("GET", "https://s192-it.ogame.gameforge.com/api/players.xml", false); 
     xmlhttp.send(null);
     if (xmlhttp.status==200) {
@@ -80,7 +79,9 @@ function generateQueryPlayer() {
     } 
     document.getElementById('player').value=query      
 
-
+}
+function    writePlanetQuery(XMLHttpRequest){
+    
 
     //creazione oggetto xml
     xmlhttp.open("GET", "https://s192-it.ogame.gameforge.com/api/universe.xml", false); 
@@ -110,32 +111,72 @@ function generateQueryPlayer() {
             }
     } 
     document.getElementById('planet').value=query      
-
+}
+function    writeScoreQuery(XMLHttpRequest){
 
      //creazione oggetto xml
-    xmlhttp.open("GET", "https://s192-it.ogame.gameforge.com/api/highscore.xml?category=1&type=1", false); 
-    xmlhttp.send(null);
-        if (xmlhttp.status==200) {
-                    xmlDoc = xmlhttp.responseXML; 
+     xmlhttp.open("GET", "https://s192-it.ogame.gameforge.com/api/highscore.xml?category=1&type=1", false); 
+     xmlhttp.send(null);
+         if (xmlhttp.status==200) {
+                     xmlDoc = xmlhttp.responseXML; 
+         }
+         else if (xmlhttp.status==404) {
+         alert("XML could not be found");
+         }
+     // Start to fetch the data by using TagName 
+     var x = xmlDoc.getElementsByTagName("player"); 
+     query="";
+ 
+     for (i = 0; i < x.length; i++) { 
+         query+="UPDATE player SET score = "+"\'"+x[i].getAttribute('score')+"\'"
+                 +"  WHERE ID = "+"\'"+x[i].getAttribute('id')+"\';";
+     } 
+ 
+ 
+     query+="SET FOREIGN_KEY_CHECKS = 1;"
+ 
+     document.getElementById('score').value=query
+}
+
+
+function generateQuery() {
+    checkboxes = document.getElementsByName('foo');
+    xmlhttp = new XMLHttpRequest()    
+
+    for(i=0;i<checkboxes.length;i++){
+        if(checkboxes[i].value=="creazioneDb" && checkboxes[i].checked){
+            writeCreationDbQuery();
+            break;
         }
-        else if (xmlhttp.status==404) {
-        alert("XML could not be found");
+    }
+
+    for(i=0;i<checkboxes.length;i++){
+        if(checkboxes[i].value=="alliance" && checkboxes[i].checked){
+            writeAllianceQuery(xmlhttp);
+            break;
         }
-    // Start to fetch the data by using TagName 
-    var x = xmlDoc.getElementsByTagName("player"); 
-    query="";
+    }
+  
+    for(i=0;i<checkboxes.length;i++){
+        if(checkboxes[i].value=="player" && checkboxes[i].checked){
+            writePlayerQuery(xmlhttp);
+            break;
+        }
+    }
+  
+    for(i=0;i<checkboxes.length;i++){
+        if(checkboxes[i].value=="planet" && checkboxes[i].checked){
+            writePlanetQuery(xmlhttp);
+            break;
+        }
+    }
 
-    for (i = 0; i < x.length; i++) { 
-        query+="UPDATE player SET score = "+"\'"+x[i].getAttribute('score')+"\'"
-                +"  WHERE ID = "+"\'"+x[i].getAttribute('id')+"\';";
-    } 
-
-
-    query+="SET FOREIGN_KEY_CHECKS = 1;"
-
-    document.getElementById('score').value=query
-    //   var textBox = document.getElementById('queryPlayer');
-   // textBox.innerHTML = query;//showdisplay- con innerText inserisco testo html codice html
+    for(i=0;i<checkboxes.length;i++){
+        if(checkboxes[i].value=="score" && checkboxes[i].checked){
+            writeScoreQuery(xmlhttp);
+            break;
+        }
+    }
 
 
 };

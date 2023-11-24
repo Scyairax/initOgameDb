@@ -1,4 +1,4 @@
-<body class="text-center"  background="img/sfondo.jpg">
+<body class="text-center" style="color:white;font-size:18px;"  background="img/sfondo.jpg">
     <div id="container" class="container">
         <div class="row logo">
             <div class="col-12" style="padding-top:20px;"><?xml version="1.0" encoding="utf-8"?>
@@ -10,38 +10,34 @@
                 <div class="col-12">
                     <div class="row">
                         <input type="button" onClick="selectAll()" value="Select all"/><br/>
-                        <input type='button' accept='text/plain' value="crea query" onclick='generateQueryPlayer()'><br>
+                        <input type='button' accept='text/plain' value="crea query" onclick='generateQuery()'><br>
+                        <div class="col-1"><button type="reset">reset</button></div>
                     </div>    
                     <br>
                     <div class="row">
                         <div class="col-1"><input type="checkbox" name="foo" value="creazioneDb"></div>
                         <div class="col-2"><label>creazioneDb  </label></div>
-                        <div class="col-3"><input type="text" id="creazioneDb" name="creazioneDb"></div>
-                        <div class="col-1"><button type="submit"> creaDB</button></div>
+                        <div class="col-5"><input type="text" id="creazioneDb" name="creazioneDb"></div>
                     </div>
                     <div class="row">
                         <div class="col-1"><input type="checkbox" name="foo" value='alliance'></div>
                         <div class="col-2"><label>alliance  </label></div>
-                        <div class="col-3"><input class="box" type="text" id='alliance' name="alliance"><br></div>
-                        <div class="col-1"><button type="submit"> creaDB</button></div>
+                        <div class="col-5"><input class="box" type="text" id='alliance' name="alliance"><br></div>
                     </div>
                     <div class="row">
                         <div class="col-1"><input type="checkbox" name="foo" value='player'></div>
                         <div class="col-2"><label>player   </label></div>
-                        <div class="col-3"><input class="box" type="text" id='player' name="player"><br></div>
-                        <div class="col-1"><button type="submit"> creaDB</button></div>
+                        <div class="col-5"><input class="box" type="text" id='player' name="player"><br></div>
                     </div>
                     <div class="row">
                         <div class="col-1"><input type="checkbox" name="foo" value='planet'></div>
                         <div class="col-2"><label>planet   </label></div>
-                        <div class="col-3"><input class="box" type="text" id='planet' name="planet"><br></div>
-                        <div class="col-1"><button type="submit"> creaDB</button></div>
+                        <div class="col-5"><input class="box" type="text" id='planet' name="planet"><br></div>
                     </div>
                     <div class="row">
                         <div class="col-1"><input type="checkbox" name="foo" value='score'></div>
                         <div class="col-2"><label>planet   </label></div>
-                        <div class="col-3"><input class="box" type="text" id='score' name="score"><br></div>
-                        <div class="col-1"><button type="submit"> creaDB</button></div>
+                        <div class="col-5"><input class="box" type="text" id='score' name="score"><br></div>
                     </div>
                     <br>
                     <div class="row">
@@ -51,6 +47,6 @@
             </div>
         </form>
     </div>
-    <script src="script/parser.js"  crossorigin="anonymous"></script>
+    <script src="script/functions.js"  crossorigin="anonymous"></script>
     <script src="script/selectAll.js"  crossorigin="anonymous"></script>
 </body>
