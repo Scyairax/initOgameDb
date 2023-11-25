@@ -19,10 +19,10 @@
 </div>
 
 </div>
-<?php
+<!----  php
     if(isset($_SESSION['user']))
     $_SESSION['user']=$_POST['user']; 
     if(isset($_SESSION['pwd']))
     $_SESSION['pwd']=$_POST['pwd'];
-?>
+---->
 <!-- Optional JavaScript -->

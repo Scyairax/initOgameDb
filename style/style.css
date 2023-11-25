@@ -7,3 +7,34 @@ div.box{
     background:url(gradient.png) repeat-x fixed top left;
     overflow:auto
 }
+
+div.tabellone{
+    height:400px;
+}
+
+.table-fixed tbody {
+    height: 600px;
+    overflow-y: auto;
+    width: 100%;
+    background-color: black;
+    opacity: 75%;
+    color: white;
+    }
+    .table-fixed thead,
+    .table-fixed tbody,
+    .table-fixed tr,
+    .table-fixed td,
+    .table-fixed th {
+    display: block;
+    }
+    .table-fixed tr:after {
+    content: "";
+    display: block;
+    visibility: hidden;
+    clear: both;
+    }
+    .table-fixed tbody td,
+    .table-fixed thead > tr > th {
+    float: left;
+    width: 170px;
+    }

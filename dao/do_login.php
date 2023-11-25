@@ -14,7 +14,7 @@
 			$righe_di_risp = $stmt->rowCount();									
 	
 			if($righe_di_risp!=0)  {
-				header( "refresh:2;url=./settingDb.php" );
+				header( "refresh:0.5;url=./home.php" );
 				//reindirizzamento menu del magazzino
 			}else{
 				echo ("ATTENZIONE,i dati inseriti potrebbero essere errati");
