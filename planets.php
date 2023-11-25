@@ -4,7 +4,6 @@
     
     <body class="text-center" style="color:white;font-size:18px;"  background="img/sfondo.jpg">
         <?php require_once('include/body/include_body.php');?>
-        <?php require_once('include/body/include_body_settingDb.php');?>
     </body>
     
 </html>
