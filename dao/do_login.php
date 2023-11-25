@@ -1,6 +1,4 @@
 <?php			
-
-
    require_once('connection_db.php');  //include il file contenenti le variabili di accesso al DBMS e al database
 	
 	$USER = ($_POST ["user"]);				//acquisizione variabili dal form login_magazzino.php
@@ -16,14 +14,12 @@
 			$righe_di_risp = $stmt->rowCount();									
 	
 			if($righe_di_risp!=0)  {
-																			//reindirizzamento menu del magazzino
-			echo ("<script> location.href = '../settingDb.php'; </script>");
-		}else
-		{
-			
-		echo ("ATTENZIONE,i dati inseriti potrebbero essere errati");
-	//	exit ("credenziali d'accesso non valide")
-		}
+				header( "refresh:2;url=./settingDb.php" );
+				//reindirizzamento menu del magazzino
+			}else{
+				echo ("ATTENZIONE,i dati inseriti potrebbero essere errati");
+				//	exit ("credenziali d'accesso non valide")
+			}
 
 
         $_SESSION['user']=$_POST['user']; 

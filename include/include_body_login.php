@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-md-4"></div>
     <div class="col-md-4">
-        <h2> Ogame-Parser</h2>
-            <form ACTION="./dao/do_login.php" METHOD="POST">
+        <h2>Parser</h2>
+            <form ACTION="./login.php" METHOD="POST">
                 <div class="form-group">
                     <label for="exampleInputEmail1">User</label>
                     <input  class="form-control" id="user" Type="text" NAME="user" SIZE="30" placeholder="inserisci nome">

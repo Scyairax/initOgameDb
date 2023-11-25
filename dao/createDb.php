@@ -47,7 +47,7 @@ if($querySc!=""){
    }
 }
 
-header( "refresh:5;url=../index.php" );
+header( "refresh:5;url=../settingDb.php" );
 ?>
 
 </body>
