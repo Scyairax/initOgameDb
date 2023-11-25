@@ -1,7 +1,12 @@
-function    writeCreationDbQuery(){
+function    writeCreationDbQuery(XMLHttpRequest){
     var query=' DROP DATABASE ogame;'
             +'CREATE DATABASE ogame;'
             +'USE	ogame;'
+            +'CREATE TABLE user ('
+            +'user varchar(255),'
+            +'pwd varchar(255),'
+            +'PRIMARY KEY (user)'
+            +');'
             +' CREATE TABLE alliance ('
             +'ID varchar(255),'
             +'Name varchar(255),'
@@ -31,7 +36,20 @@ function    writeCreationDbQuery(){
             +'PlanetID varchar(255),'
             +'PRIMARY KEY (ID),'
             +' FOREIGN KEY (PlanetID) REFERENCES planet(ID) );'
+            +'CREATE TABLE server ('
+            +'Name varchar(255),'
+            +'time_zone varchar(255),'
+            +'version varchar(255),'
+            +'spped varchar(255),'
+            +'speedFleetPeaceful varchar(255),'
+            +'speedFleetWar varchar(255),'
+            +'speedFleetHolding varchar(255),'
+            +'galaxies varchar(255),'
+            +'systems varchar(255),'
+            +'PRIMARY KEY (Name)'
+            +');'
             +'    SET FOREIGN_KEY_CHECKS = 0;';
+
         document.getElementById('creazioneDb').value=query
 }
 function    writeAllianceQuery(XMLHttpRequest){
@@ -137,15 +155,13 @@ function    writeScoreQuery(XMLHttpRequest){
  
      document.getElementById('score').value=query
 }
-
-
 function generateQuery() {
     checkboxes = document.getElementsByName('foo');
     xmlhttp = new XMLHttpRequest()    
 
     for(i=0;i<checkboxes.length;i++){
         if(checkboxes[i].value=="creazioneDb" && checkboxes[i].checked){
-            writeCreationDbQuery();
+            writeCreationDbQuery(xmlhttp);
             break;
         }
     }

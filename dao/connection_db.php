@@ -1,6 +1,6 @@
 <?php
-session_name("parser");
-session_start();
+   session_start();
+
 
 $hostname = "localhost";
 $username = "root";
